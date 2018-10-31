@@ -1,7 +1,10 @@
-const express = require('express');
-const os = require('os');
+import express from 'express'
+import os from 'os'
+import dotenv from 'dotenv'
 
 const app = express();
+
+dotenv.config();
 
 app.use(express.static('dist'));
 app.get('/api/getUsername', (req, res) => res.send({ username: os.userInfo().username }));
