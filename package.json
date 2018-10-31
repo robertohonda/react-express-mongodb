@@ -4,8 +4,11 @@
   "description": "Boilerplate to build a full stack web application using React, Node.js, Express and Webpack.",
   "main": "src/server/index.js",
   "scripts": {
-    "build": "webpack --mode production",
-    "start": "npm run build && node src/server/index.js",
+    "clean": "rm -rf build dist && mkdir build dist",
+    "build-client": "webpack --mode production",
+    "build-server": "babel -d ./build ./src/server -s",
+    "build": "npm run build-client && npm run build-server",
+    "start": "npm run clean && npm run build && node ./build/index.js",
     "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
     "server": "nodemon --exec babel-node src/server/index.js",
     "dev": "concurrently \"npm run server\" \"npm run client\""
@@ -13,6 +16,7 @@
   "author": "Sandeep Raveesh",
   "license": "ISC",
   "dependencies": {
+    "babel-core": "^7.0.0-bridge.0",
     "body-parser": "^1.18.3",
     "dotenv": "^6.1.0",
     "dotenv-webpack": "^1.5.7",
@@ -23,10 +27,11 @@
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
+    "@babel/node": "^7.0.0",
     "@babel/plugin-proposal-class-properties": "^7.0.0",
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
-    "@babel/node": "^7.0.0",
+    "@babel/cli": "^7.0.0",
     "babel-eslint": "^10.0.0",
     "babel-loader": "^8.0.0",
     "clean-webpack-plugin": "^0.1.19",

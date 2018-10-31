@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/server/index.js"],"names":["app","listen","console","log"],"mappings":";;AAAA;;;;AAEAA,iBAAIC,MAAJ,CAAW,IAAX,EAAiB;AAAA,SAAMC,OAAO,CAACC,GAAR,CAAY,yBAAZ,CAAN;AAAA,CAAjB","sourcesContent":["import app from './config/express'\n\napp.listen(8080, () => console.log('Listening on port 8080!'));\n"],"file":"index.js"}
