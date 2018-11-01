@@ -21,9 +21,9 @@ app.use('/api', routes)
 // a script tag to your application's JavaScript file(s).
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, '../../dist/index.html'), function(err) {
-    if (err) {
-      res.status(500).send(err)
-    }
+    // if (err) {
+    //   res.status(500).send(err)
+    // }
   })
 })
 
