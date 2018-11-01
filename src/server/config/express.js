@@ -5,6 +5,7 @@ import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import routes from '../routes'
 import path from 'path'
+import cors from 'cors'
 
 const app = express();
 
@@ -12,6 +13,7 @@ dotenv.config();
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
+app.use(cors())
 
 app.use(express.static('dist'));
 app.get('/api/getUsername', (req, res) => res.json({ username: os.userInfo().username }));
