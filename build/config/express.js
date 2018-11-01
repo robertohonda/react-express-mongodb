@@ -19,6 +19,8 @@ var _routes = _interopRequireDefault(require("../routes"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var path = require('path');
+
 var app = (0, _express.default)();
 
 _dotenv.default.config();
@@ -30,8 +32,15 @@ app.get('/api/getUsername', function (req, res) {
   return res.json({
     username: _os.default.userInfo().username
   });
+}); //app.use('/api', routes)
+
+app.get('/*', function (req, res) {
+  res.sendFile(path.join(__dirname, '../../dist/index.html'), function (err) {
+    if (err) {
+      res.status(500).send(err);
+    }
+  });
 });
-app.use('/api', _routes.default);
 var _default = app;
 exports.default = _default;
 //# sourceMappingURL=express.js.map
