@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const Dotenv = require('dotenv-webpack');
+require('dotenv').config();
 
 const outputDirectory = 'dist';
 
@@ -31,12 +32,12 @@ module.exports = {
     ]
   },
   devServer: {
-    port: 3000,
+    port: process.env.CLIENT_PORT,
     open: true,
     historyApiFallback: true,
-    // proxy: {
-    //   '/api': 'http://localhost:8080'
-    // }
+    proxy: {
+      '/api': `http://localhost:${process.env.SERVER_PORT}`
+    }
   },
   plugins: [
     new CleanWebpackPlugin([outputDirectory]),

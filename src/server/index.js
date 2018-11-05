@@ -1,3 +1,4 @@
-import app from './config/express'
+import app from './config/express';
+import {PORT} from './config/config'
 
-app.listen(3001, () => console.log('Listening on port 3001!'));
+app.listen(PORT, () => console.log(`Listening on port ${PORT}!`));
