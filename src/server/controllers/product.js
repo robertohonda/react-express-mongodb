@@ -1,16 +1,19 @@
-import Product from '../models/product';
+import ProductService from '../services/product'
+import APIError from '../helpers/error'
 
-export const createProduct = (req, res, next) => {
-  const product = new Product(
-    {
-      name: 'teste',
-      price: 5
-    }
-  );
-  product.save((err) => {
-    if (err) {
-      return next(err);
-    }
-    res.send('Product Created successfully')
-  })
+export const createProduct = async (req, res) => {
+  const product = req.body
+  return ProductService.create(product)
+}
+
+export const error = async (req) => {
+  // return {
+  //   message: 'hello'
+  // }
+  throw new APIError({message: 'APIError'})
+}
+
+export default {
+  create: createProduct,
+  error
 }

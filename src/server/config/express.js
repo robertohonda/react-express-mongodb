@@ -5,6 +5,7 @@ import bodyParser from "body-parser";
 import routes from "../routes";
 import path from "path";
 import cors from "cors";
+import error from '../middlewares/error';
 
 const app = express();
 
@@ -17,6 +18,12 @@ app.get("/api/getUsername", (req, res) =>
   res.json({ username: os.userInfo().username })
 );
 app.use("/api", routes);
+
+// if error is not an instanceOf APIError, convert it.
+app.use('/api', error.converter);
+
+// catch 404 and forward to error handler
+app.use('/api', error.notFound);
 
 // handle every other route with index.html, which will contain
 // a script tag to your application's JavaScript file(s).
