@@ -1,17 +1,29 @@
 import express from "express";
+import useDev from './express.dev'
 import os from "os";
-import morgan from "morgan";
 import bodyParser from "body-parser";
 import routes from "../routes";
 import path from "path";
 import cors from "cors";
 import error from '../middlewares/error';
+import { NODE_ENV } from './config'
+import useProd from "./express.prod";
 
 const app = express();
 
-app.use(morgan("dev"));
 app.use(bodyParser.json());
 app.use(cors());
+
+switch(NODE_ENV) {
+  case 'development':
+    useDev(app);
+    break;
+  case 'production': 
+    useProd(app)
+    break;
+  default:
+    useDev(app);
+}
 
 app.use(express.static("dist"));
 app.get("/api/getUsername", (req, res) =>
