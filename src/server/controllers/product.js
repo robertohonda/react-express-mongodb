@@ -10,6 +10,7 @@ export const error = async (req) => {
   // return {
   //   message: 'hello'
   // }
+
   throw new APIError({message: 'APIError'})
 }
 
