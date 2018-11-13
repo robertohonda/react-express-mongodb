@@ -1,11 +1,13 @@
-// import Joi from 'joi';
+import mongoose from 'mongoose'
+import ProductSchema from './product'
 
-// const ProductSchema = Joi.object().keys({
-//   email: Joi.string().email().required(),
-//   password: Joi.string().trim().required(),
-//   firstName: Joi.string().trim().required(),
-//   lastName: Joi.string().trim().required(),
+const UserSchema = mongoose.Schema({
+  username: {
+    type: String,
+    trim: true,
+    required: true,
+    unique: true
+  },
+})
 
-// })
-
-// export default ProductSchema
+export default UserSchema

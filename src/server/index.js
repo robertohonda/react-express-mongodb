@@ -4,6 +4,7 @@ import { PORT, DB_URI } from "./config/config";
 
 import "./models/user"
 
+mongoose.set('useCreateIndex', true);
 mongoose.connect(DB_URI, { useNewUrlParser: true })
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}!`));

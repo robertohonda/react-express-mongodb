@@ -1,0 +1,19 @@
+TODO:
+  Passport authentication
+  Front-End: File structure
+
+Notes:
+  To use mongodb with nested object:
+  
+  Restaurant: {
+    ...
+  }
+
+  Cliend: {
+    ...
+  }
+
+  Order: {
+    Client: ClientSchema,
+    Restaurant: RestaurantSchema
+  }
