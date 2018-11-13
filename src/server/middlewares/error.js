@@ -5,11 +5,13 @@ import APIError from '../helpers/error'
  * @public
  */
 export const handler = (err, req, res, next) => {
+
   const response = {
     code: err.status,
+    type: err.type,
     message: err.message,
     errors: err.errors,
-    stack: err.stack,
+    stack: err.stack
   };
 
   /*

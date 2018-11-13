@@ -7,10 +7,7 @@ export const createProduct = async (req, res) => {
 }
 
 export const error = async (req) => {
-  // return {
-  //   message: 'hello'
-  // }
-
+  
   throw new APIError({message: 'APIError'})
 }
 
