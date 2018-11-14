@@ -8,11 +8,14 @@ import cors from "cors";
 import error from '../middlewares/error';
 import { NODE_ENV } from './config'
 import useProd from "./express.prod";
+import passport from './passport'
 
 const app = express();
 
 app.use(bodyParser.json());
+app.use( bodyParser.urlencoded({ extended : false }) );
 app.use(cors());
+app.use(passport.initialize())
 
 switch(NODE_ENV) {
   case 'development':

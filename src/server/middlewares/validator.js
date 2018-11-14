@@ -15,13 +15,12 @@ const buildUsefulErrorObject = (error, type=error.name) => {
   return errorMessage
 };
 
-export const validateSchema = (model, type) => (req, res, next) => {
-
+export const validateModel = (model, type) => (req, res, next) => {
   model(req.body).validate()
     .then(() => next())
     .catch(error => next(buildUsefulErrorObject(error, type)))
 }
 
 export default {
-  validateSchema
+  validateModel
 }
