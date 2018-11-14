@@ -1,4 +1,5 @@
 import express from "express";
+import mongoose from './mongoose'
 import useDev from './express.dev'
 import os from "os";
 import bodyParser from "body-parser";
@@ -6,11 +7,13 @@ import routes from "../routes";
 import path from "path";
 import cors from "cors";
 import error from '../middlewares/error';
-import { NODE_ENV } from './config'
+import { NODE_ENV, DB_URI } from './config'
 import useProd from "./express.prod";
 import passport from './passport'
 
 const app = express();
+
+mongoose.connect(DB_URI, { useNewUrlParser: true })
 
 app.use(bodyParser.json());
 app.use( bodyParser.urlencoded({ extended : false }) );
