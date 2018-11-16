@@ -8,16 +8,25 @@ export const login = async user => {
   const payload = {
     _id: user._id
   }
+  const { expiresIn } = JWT_OPTIONS
 
   const token = jwt.sign(payload, JWT_SECRET, JWT_OPTIONS)
+
   return  {
     token,
+    expiresIn,
     user
   }
 }
+
+export const findById = async id => User.findById(id)
+
+export const findByEmail = async email => User.findOne({ email });
   
 
 export default {
   signUp,
-  login
+  login,
+  findById,
+  findByEmail
 }

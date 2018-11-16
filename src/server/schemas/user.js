@@ -22,9 +22,9 @@ const UserSchema = mongoose.Schema({
   password: {
     type: String,
     trim: true,
-    required: true
+    required: true,
   }
-})
+}, { versionKey: false })
 
 UserSchema.pre('save', async function(next){
   const user = this;
@@ -33,6 +33,12 @@ UserSchema.pre('save', async function(next){
   this.password = hash;
   next();
 });
+
+UserSchema.methods.toJSON = function() {
+  const obj = this.toObject();
+  delete obj.password;
+  return obj;
+ }
 
 UserSchema.methods.isValidPassword = async function(password){
   const user = this;
