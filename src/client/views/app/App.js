@@ -1,13 +1,18 @@
 import React from "react";
-import { IntlProvider, FormattedMessage } from "react-intl";
-import {language, messages} from '../../config/translation';
+import { PersistGate } from 'redux-persist/integration/react'
+import { Provider } from 'react-redux';
+import { persistor, store } from '../../config/store';
+import ConnectedIntlProvider from "../connectedIntlProvider/ConnectedIntlProvider";
 
-const App = () => 
-  <IntlProvider locale={language} messages={messages[language]}>
-    <h1>
-      <FormattedMessage id="home.title" />
-    </h1>
-  </IntlProvider>
+const App = () =>(
+  <Provider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
+      <ConnectedIntlProvider>
+        <h1>teste</h1>
+      </ConnectedIntlProvider>
+    </PersistGate>
+  </Provider>
+)
 
 
 export default App;
