@@ -9,7 +9,7 @@
     "build-server": "babel -d ./build ./src/server -s",
     "build": "npm run build-client && npm run build-server",
     "start": "npm run clean && npm run build && node ./build/index.js",
-    "client": "webpack-dev-server --mode development --devtool inline-source-map --hot",
+    "client": "webpack-dev-server --mode development --devtool inline-source-map --hot --bail",
     "server": "nodemon --exec babel-node src/server/index.js",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },

@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { IntlProvider,FormattedMessage } from "react-intl";
+import { IntlProvider } from "react-intl";
 import {messages} from '../../config/translation';
 
 const ConnectedIntlProvider = ({children, language}) => (
