@@ -1,5 +1,5 @@
 import Home from '../views/home/Home'
-import {authenticationMiddleware} from './middlewares'
+import authenticationMiddleware from '../middlewares/authentication'
 
 // const routes = [
 //   {
