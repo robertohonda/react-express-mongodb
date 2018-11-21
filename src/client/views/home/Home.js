@@ -1,8 +1,14 @@
 import React from 'react'
+import { Button } from '@material-ui/core';
 
 export default () =>
   (
-    <h1>
-      Home
+    <div>
+      <Button color="primary" variant="contained">
+        Click
+      </Button>
+      <h1>
+        Home
     </h1>
+    </div>
   )
